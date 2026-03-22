@@ -116,10 +116,61 @@ if st.button("Calculate Age"):
         # 🎉 Next Birthday Calculation
         next_birthday = date(today.year, dob.month, dob.day)
 
-        # If birthday already passed this year
+#         # If birthday already passed this year
+#         if next_birthday < today:
+#             next_birthday = date(today.year + 1, dob.month, dob.day)
+
+#         # days_left = (next_birthday - today).days
+
+#         # st.info(f"🎉 Your next birthday is in {days_left} days!")
+
+#  # Next Birthday
+# next_birthday = date(today.year, dob.month, dob.day)
+# today=date.today()
+# if next_birthday < today:
+#     next_birthday = date(today.year + 1, dob.month, dob.day)
+
+# # Calculate difference
+# y = next_birthday.year - today.year
+# m = next_birthday.month - today.month
+# d = next_birthday.day - today.day
+
+# # Adjust negatives
+# if d < 0:
+#     m -= 1
+#     d += 30   # approx (good enough for UI)
+
+# if m < 0:
+#     y -= 1
+#     m += 12
+
+# st.info(f"🎉 Next birthday in: {y} years, {m} months, {d} days")    
+
+
+
+
+# or use this 
+# from dateutil.relativedelta import relativedelta
+
+# diff = relativedelta(next_birthday, today)
+
+# st.info(f"🎉 Next birthday in: {diff.years} years, {diff.months} months, {diff.days} days")
+
+
         if next_birthday < today:
             next_birthday = date(today.year + 1, dob.month, dob.day)
 
-        days_left = (next_birthday - today).days
+        # Difference
+        y = next_birthday.year - today.year
+        m = next_birthday.month - today.month
+        d = next_birthday.day - today.day
 
-        st.info(f"🎉 Your next birthday is in {days_left} days!")
+        if d < 0:
+            m -= 1
+            d += 30
+
+        if m < 0:
+            y -= 1
+            m += 12
+
+        st.info(f"🎉 Next birthday in: {y} years, {m} months, {d} days")
